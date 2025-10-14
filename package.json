@@ -4,10 +4,11 @@
   "description": "Portfolio website",
   "main": "index.html",
   "homepage": "https://nelsonnnn.github.io/nelson_portfolio",
-  "scripts": {
-    "deploy": "gh-pages -d dist",
-    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
-  },
+    "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist",
+        "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NelsonNNN/nelson_portfolio.git"
