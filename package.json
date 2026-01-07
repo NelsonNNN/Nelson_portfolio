@@ -19,6 +19,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "sass": "^1.97.2"
   }
 }
