@@ -1,0 +1,917 @@
+/* Set Text Color
+@function set-text-color($color) {
+  @if (lightness($color) > 60) {
+    @return #0000;
+  } @else {
+    @return #ffff;
+  }
+}
+    */
+.menu-btn {
+  position: absolute;
+  z-index: 3;
+  right: 35px;
+  top: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease-out; }
+  .menu-btn .btn-line {
+    width: 28px;
+    height: 3px;
+    margin: 0 0 5px 0;
+    background: ghostwhite;
+    transition: all 0.3s ease-out; }
+  .menu-btn.close {
+    transform: rotate(180deg); }
+    .menu-btn.close .btn-line:nth-child(1) {
+      animation: firstChild;
+      animation-duration: 1s;
+      animation-fill-mode: forwards; }
+    .menu-btn.close .btn-line:nth-child(2) {
+      animation: secondChild;
+      animation-duration: 1s;
+      animation-fill-mode: forwards; }
+    .menu-btn.close .btn-line:nth-child(3) {
+      animation: thirdChild;
+      animation-duration: 1s;
+      animation-fill-mode: forwards; }
+
+@keyframes firstChild {
+  0% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(17px); }
+  100% {
+    transform: rotate(45deg) translateY(10px) translateX(11px); } }
+
+@keyframes secondChild {
+  0% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(10px); }
+  100% {
+    opacity: 0; } }
+
+@keyframes thirdChild {
+  0% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(0); }
+  100% {
+    transform: rotate(-45deg); } }
+  .menu-btn.open {
+    transform: rotate(180deg); }
+    .menu-btn.open .btn-line:nth-child(1) {
+      animation: firstChildr;
+      animation-duration: 1s;
+      animation-fill-mode: forwards; }
+    .menu-btn.open .btn-line:nth-child(2) {
+      animation: secondChildr;
+      animation-duration: 1s;
+      animation-fill-mode: forwards; }
+    .menu-btn.open .btn-line:nth-child(3) {
+      animation: thirdChildr;
+      animation-duration: 1s;
+      animation-fill-mode: forwards; }
+
+@keyframes firstChildr {
+  100% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(17px); }
+  0% {
+    transform: rotate(45deg) translateY(10px) translateX(11px); } }
+
+@keyframes secondChildr {
+  100% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(10px); }
+  0% {
+    opacity: 0; } }
+
+@keyframes thirdChildr {
+  100% {
+    transform: translateY(0); }
+  50% {
+    transform: translateY(0); }
+  0% {
+    transform: rotate(-45deg); } }
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.9;
+  visibility: hidden; }
+  .menu.show {
+    visibility: visible; }
+  .menu-branding, .menu-nav {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 50%;
+    height: 100vh;
+    overflow: hidden; }
+  .menu-nav {
+    margin: 0;
+    padding: 0;
+    background: #1b1b1b;
+    list-style: none;
+    transform: scale(0, 0);
+    transition: all 0.3s ease-out;
+    transition-delay: 0.5s; }
+    .menu-nav.show {
+      transform: scale(1, 1);
+      transition-delay: 0s; }
+  .menu-branding {
+    background: #081687;
+    transform: translate3d(100%, 0, 0);
+    transition: all 0.3s ease-out; }
+    .menu-branding.show {
+      transform: translate3d(0, 0, 0);
+      transition-delay: 0.5s; }
+    .menu-branding .portrait {
+      width: 250px;
+      height: 250px;
+      background-image: url("menupic.jpg");
+      background-size: cover;
+      border-radius: 50%;
+      border: solid 4px #4bf3dea6; }
+  .menu .nav-item {
+    transform: scale(0);
+    transition: all 0.3s ease-out; }
+    .menu .nav-item.show {
+      transform: scale(1, 1); }
+    .menu .nav-item.current > a {
+      color: #4bf3dea6;
+      text-shadow: 0 0 7px #6c91f6, 0 0 10px #6c91f6, 0 0 21px #6c91f6, 0 0 42px #e7edf7; }
+  .menu .nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    font-weight: 300;
+    color: ghostwhite;
+    text-decoration: none;
+    transition: all 0.3s ease-out; }
+    .menu .nav-link:hover {
+      color: #4bf3dea6; }
+
+.nav-item:nth-child(1) {
+  transition-delay: 0.1s; }
+
+.nav-item:nth-child(2) {
+  transition-delay: 0.2s; }
+
+.nav-item:nth-child(3) {
+  transition-delay: 0.3s; }
+
+.nav-item:nth-child(4) {
+  transition-delay: 0.4s; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  background-attachment: fixed;
+  background-size: cover;
+  background: #858585;
+  color: ghostwhite;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5;
+  height: 100%; }
+  body:after {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: #424242;
+    background: linear-gradient(90deg, #424242 25%, #d5c2c2 50%, #424242 75%); }
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400; }
+  h1 span,
+  h2 span,
+  h3 span {
+    color: #4bf3dea6;
+    text-shadow: 0 0 7px #6c91f6, 0 0 10px #6c91f6, 0 0 21px #6c91f6, 0 0 42px #e7edf7; }
+
+a {
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease-out; }
+  a:hover {
+    transform: scale(1.2); }
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%; }
+
+.text-secondary {
+  color: #4bf3dea6;
+  text-shadow: 0 0 7px #6c91f6, 0 0 10px #6c91f6, 0 0 21px #6c91f6, 0 0 42px #e7edf7; }
+
+main {
+  margin: 4rem;
+  text-align: center;
+  min-height: 100vh; }
+  main .container {
+    display: flex;
+    flex-direction: column; }
+    main .container div {
+      margin: 2rem 0; }
+    main .container .my-title {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      width: 100%;
+      background-attachment: fixed;
+      background-size: cover; }
+      main .container .my-title:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: -1;
+        background-image: url("mytitle.jpg"); }
+      main .container .my-title .my-name {
+        margin: 2rem 0;
+        padding: 0.2rem 1rem;
+        position: relative;
+        top: -10%; }
+        main .container .my-title .my-name::after {
+          content: '';
+          border: 1px solid white;
+          width: 70%;
+          position: absolute;
+          left: 15%;
+          top: 120%; }
+      main .container .my-title .my-titles {
+        position: relative;
+        top: -10%; }
+      main .container .my-title .viewme {
+        position: relative;
+        top: -10%;
+        border: 2px #4bf3dea6 solid;
+        border-radius: 10px;
+        width: fit-content;
+        background-color: darkblue;
+        color: #4bf3dea6; }
+        main .container .my-title .viewme a {
+          color: #4bf3dea6;
+          text-shadow: 0 0 7px #6c91f6, 0 0 10px #6c91f6, 0 0 21px #6c91f6, 0 0 42px #e7edf7;
+          padding: 1rem; }
+        main .container .my-title .viewme:hover {
+          transform: scale(1.1); }
+    main .container #myitems {
+      display: flex;
+      background: #1b1b1b;
+      border-radius: 50px;
+      box-shadow: 4px 4px 10px 0.1px #4bf3dea6; }
+      main .container #myitems .icons {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: 2rem 1rem; }
+        main .container #myitems .icons:first-child {
+          position: relative; }
+          main .container #myitems .icons:first-child::after {
+            content: '';
+            border: 1px solid white;
+            height: 100%;
+            position: absolute;
+            left: 100%;
+            top: 0%; }
+        main .container #myitems .icons ul {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-evenly;
+          width: 100%; }
+          main .container #myitems .icons ul li {
+            position: relative;
+            list-style: none;
+            visibility: hidden; }
+            main .container #myitems .icons ul li.animate {
+              visibility: visible; }
+              main .container #myitems .icons ul li.animate:nth-of-type(1) {
+                animation: kwanza;
+                animation-duration: 1s;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-timing-function: ease;
+                animation-delay: 1s;
+                transition: all 0.3s ease-out; }
+              main .container #myitems .icons ul li.animate:nth-of-type(2) {
+                animation: pili;
+                animation-duration: 1s;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-timing-function: ease;
+                animation-delay: 0.7s;
+                transition: all 0.3s ease-out; }
+              main .container #myitems .icons ul li.animate:nth-of-type(3) {
+                animation: tatu;
+                animation-duration: 1s;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-timing-function: ease;
+                animation-delay: 0.5s;
+                transition: all 0.3s ease-out; }
+              main .container #myitems .icons ul li.animate:nth-of-type(4) {
+                animation: nne;
+                animation-duration: 1s;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-timing-function: ease;
+                animation-delay: 0.3s;
+                transition: all 0.3s ease-out; }
+            main .container #myitems .icons ul li i {
+              color: blue; }
+
+@keyframes kwanza {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes pili {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes tatu {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes nne {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+        main .container #myitems .icons .subicons {
+          display: flex;
+          justify-content: space-evenly;
+          margin: 0;
+          width: 100%; }
+          main .container #myitems .icons .subicons a {
+            position: relative;
+            list-style: none;
+            transition: all 0.3s ease-out;
+            visibility: hidden; }
+            main .container #myitems .icons .subicons a.animate {
+              visibility: visible; }
+              main .container #myitems .icons .subicons a.animate:nth-of-type(1) {
+                animation: unos;
+                animation-duration: 1s;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-timing-function: ease;
+                animation-delay: 0.3s;
+                transition: all 0.3s ease-out; }
+              main .container #myitems .icons .subicons a.animate:nth-of-type(2) {
+                animation: des;
+                animation-duration: 1s;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-timing-function: ease;
+                animation-delay: 0.5s;
+                transition: all 0.3s ease-out; }
+              main .container #myitems .icons .subicons a.animate:nth-of-type(3) {
+                animation: tres;
+                animation-duration: 1s;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-timing-function: ease;
+                animation-delay: 0.7s;
+                transition: all 0.3s ease-out; }
+              main .container #myitems .icons .subicons a.animate:nth-of-type(4) {
+                animation: quadre;
+                animation-duration: 1s;
+                animation-direction: normal;
+                animation-fill-mode: both;
+                animation-timing-function: ease;
+                animation-delay: 1s;
+                transition: all 0.3s ease-out; }
+            main .container #myitems .icons .subicons a:hover {
+              transform: scale(1.3); }
+            main .container #myitems .icons .subicons a i {
+              color: #4bf3dea6;
+              text-shadow: 0 0 7px #6c91f6, 0 0 10px #6c91f6, 0 0 21px #6c91f6, 0 0 42px #e7edf7; }
+
+@keyframes unos {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes des {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes tres {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes quadre {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+    main .container #aboutme {
+      display: flex;
+      background: #1b1b1b;
+      border-radius: 10px;
+      box-shadow: 4px 4px 10px 0.1px #4bf3dea6; }
+      main .container #aboutme .profile {
+        width: 50%;
+        margin: 2rem 0.5rem; }
+        main .container #aboutme .profile .profilepic {
+          position: relative;
+          margin: auto;
+          border-radius: 50%;
+          border: #4bf3dea6 solid;
+          width: 50%;
+          height: 70%;
+          visibility: hidden; }
+          main .container #aboutme .profile .profilepic.reveal {
+            animation: picture;
+            animation-duration: 1s;
+            animation-direction: normal;
+            animation-fill-mode: both;
+            animation-timing-function: ease;
+            animation-delay: 0.5s;
+            transition: all 0.3s ease-out;
+            visibility: visible; }
+
+@keyframes picture {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1; } }
+      main .container #aboutme .myabout {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        margin: 2rem 0.5rem; }
+        main .container #aboutme .myabout .headsup {
+          visibility: hidden; }
+          main .container #aboutme .myabout .headsup.revealToo {
+            animation-duration: 0s;
+            position: relative;
+            animation: smallheading;
+            animation-duration: 1s;
+            animation-direction: normal;
+            animation-fill-mode: both;
+            animation-timing-function: ease;
+            animation-delay: 1s;
+            transition: all 0.3s ease-out;
+            visibility: visible; }
+        main .container #aboutme .myabout .paragraph {
+          visibility: hidden; }
+          main .container #aboutme .myabout .paragraph.revealThree {
+            position: relative;
+            animation: smallparagraph;
+            animation-duration: 1s;
+            animation-direction: normal;
+            animation-fill-mode: both;
+            animation-timing-function: ease;
+            animation-delay: 1s;
+            transition: all 0.3s ease-out;
+            visibility: visible; }
+          main .container #aboutme .myabout .paragraph a {
+            color: #4bf3dea6;
+            text-shadow: 0 0 7px #6c91f6, 0 0 10px #6c91f6, 0 0 21px #6c91f6, 0 0 42px #e7edf7; }
+
+@keyframes smallheading {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes smallparagraph {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+    main .container .mycontacts {
+      margin: 2rem 0.5rem;
+      background: #1b1b1b;
+      border-radius: 10px;
+      box-shadow: 4px 4px 10px 0.1px #4bf3dea6; }
+      main .container .mycontacts .boxes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+        margin-top: 1rem; }
+        main .container .mycontacts .boxes div {
+          font-size: 1rem;
+          border-radius: 10px;
+          padding: 1rem 1rem;
+          box-shadow: 11px 9px black;
+          margin-bottom: 3rem;
+          transition: all 0.3s ease-out;
+          position: relative; }
+          main .container .mycontacts .boxes div::after {
+            content: '';
+            bottom: 0%;
+            left: 0%;
+            background: #5b4dd4;
+            transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+            z-index: -1;
+            height: 0%;
+            width: 100%;
+            border-radius: 10px;
+            position: absolute;
+            z-index: -1; }
+          main .container .mycontacts .boxes div:hover {
+            transform: translateX(5px);
+            color: black;
+            box-shadow: none; }
+            main .container .mycontacts .boxes div:hover::after {
+              height: 100%;
+              top: 0%;
+              bottom: auto; }
+            main .container .mycontacts .boxes div:hover span {
+              color: black; }
+      main .container .mycontacts .message form {
+        display: flex;
+        flex-direction: column;
+        align-items: center; }
+        main .container .mycontacts .message form input, main .container .mycontacts .message form textarea {
+          border-radius: 5px;
+          margin: 1rem;
+          width: 70%;
+          padding: 1rem; }
+        main .container .mycontacts .message form #submit {
+          justify-self: center;
+          width: 40%; }
+    main .container .backfront {
+      margin: 2rem 0.5rem;
+      background: #1b1b1b;
+      border-radius: 10px;
+      box-shadow: 4px 4px 10px 0.1px #4bf3dea6;
+      display: flex;
+      justify-content: space-between; }
+      main .container .backfront a {
+        color: #4bf3dea6;
+        text-shadow: 0 0 7px #6c91f6, 0 0 10px #6c91f6, 0 0 21px #6c91f6, 0 0 42px #e7edf7;
+        margin: 1rem; }
+    main .container .work-title {
+      margin-top: 2rem; }
+    main .container .my-projects {
+      margin: 0.5rem 0;
+      position: relative;
+      width: 100%; }
+      main .container .my-projects a {
+        color: #4bf3dea6;
+        text-shadow: 0 0 7px #6c91f6, 0 0 10px #6c91f6, 0 0 21px #6c91f6, 0 0 42px #e7edf7;
+        text-decoration: underline; }
+    main .container .projects {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem; }
+      main .container .projects .item {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 25% 25% 50%;
+        grid-template-rows: auto auto;
+        align-items: center;
+        margin-bottom: 3rem;
+        background: #1b1b1b;
+        border-radius: 10px;
+        box-shadow: 4px 4px 10px 0.1px #4bf3dea6; }
+        main .container .projects .item .description {
+          grid-column-start: 1;
+          grid-column-end: 3;
+          grid-row-start: 1;
+          grid-row-end: 2; }
+        main .container .projects .item a:first-child {
+          width: 95%;
+          grid-column-start: 3;
+          grid-column-end: 4;
+          grid-row-start: 1;
+          grid-row-end: 3; }
+          main .container .projects .item a:first-child:hover {
+            transform: scale(1); }
+        main .container .projects .item img {
+          width: 100%;
+          border: 1px #fff solid;
+          height: 35vh; }
+          main .container .projects .item img:hover {
+            opacity: 0.5;
+            border-color: #4bf3dea6;
+            transition: all 0.3s ease-out; }
+        main .container .projects .item a:nth-child(3), main .container .projects .item a:nth-child(4) {
+          background: #858585;
+          padding: 0.5rem;
+          justify-self: center;
+          color: #4bf3dea6; }
+    main .container .cv {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column; }
+      main .container .cv .mycv {
+        margin: 1rem 0; }
+      main .container .cv img {
+        margin: 1rem 0; }
+      main .container .cv span {
+        color: #4bf3dea6;
+        text-shadow: 0 0 7px #6c91f6, 0 0 10px #6c91f6, 0 0 21px #6c91f6, 0 0 42px #e7edf7; }
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: #6c6c6c;
+  color: ghostwhite;
+  height: 60px; }
+
+@media screen and (max-width: 5000px) and (min-width: 801px) {
+  body main .container #myitems ul li.animate:nth-of-type(1) {
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-delay: 0.5s; }
+  body main .container #myitems ul li.animate:nth-of-type(2) {
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-delay: 0.5s; }
+  body main .container #myitems ul li.animate:nth-of-type(3) {
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-delay: 0.5s; }
+  body main .container #myitems ul li.animate:nth-of-type(4) {
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-delay: 0.5s; }
+  @keyframes kwanza {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  @keyframes pili {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  @keyframes tatu {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  @keyframes nne {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  body main .container #myitems .subicons a.animate:nth-of-type(1) {
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-delay: 0.8s; }
+  body main .container #myitems .subicons a.animate:nth-of-type(2) {
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-delay: 0.8s; }
+  body main .container #myitems .subicons a.animate:nth-of-type(3) {
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-delay: 0.8s; }
+  body main .container #myitems .subicons a.animate:nth-of-type(4) {
+    animation-duration: 1s;
+    animation-direction: normal;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+    animation-delay: 0.8s; }
+  @keyframes unos {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  @keyframes des {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  @keyframes tres {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  @keyframes quadre {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  body main .container .aboutme .profile .profilepic {
+    position: relative;
+    margin: auto;
+    border-radius: 50%;
+    border: #4bf3dea6 solid;
+    width: 50%;
+    height: 70%;
+    visibility: hidden; }
+    body main .container .aboutme .profile .profilepic.reveal {
+      animation: picture;
+      animation-duration: 1s;
+      animation-direction: normal;
+      animation-fill-mode: both;
+      animation-timing-function: ease;
+      animation-delay: 1s;
+      transition: all 0.3s ease-out;
+      visibility: visible; }
+  @keyframes picture {
+    0% {
+      opacity: 0; }
+    50% {
+      opacity: 0.5; }
+    100% {
+      opacity: 1; } }
+  body main .container .aboutme .myabout .headsup {
+    visibility: hidden; }
+    body main .container .aboutme .myabout .headsup.revealToo {
+      animation-duration: 0s;
+      position: relative;
+      animation: smallheading;
+      animation-duration: 1s;
+      animation-direction: normal;
+      animation-fill-mode: both;
+      animation-timing-function: ease;
+      animation-delay: 3s;
+      transition: all 0.3s ease-out;
+      visibility: visible; }
+  body main .container .aboutme .myabout .paragraph {
+    visibility: hidden; }
+    body main .container .aboutme .myabout .paragraph.revealThree {
+      position: relative;
+      animation: smallparagraph;
+      animation-duration: 1s;
+      animation-direction: normal;
+      animation-fill-mode: both;
+      animation-timing-function: ease;
+      animation-delay: 1s;
+      transition: all 0.3s ease-out;
+      visibility: visible; }
+    body main .container .aboutme .myabout .paragraph a {
+      color: #4bf3dea6; }
+  @keyframes smallheading {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  @keyframes smallparagraph {
+    0% {
+      opacity: 0; }
+    100% {
+      opacity: 1; } }
+  body main .container .projects .item {
+    height: 60vh; }
+    body main .container .projects .item a img {
+      height: 60vh;
+      width: 95%; } }
+
+@media screen and (max-width: 800px) {
+  ul.menu-nav,
+  div.menu-branding {
+    float: none;
+    width: 100%;
+    min-height: 0; }
+  .menu-nav {
+    height: 75vh;
+    transform: translate3d(0, 0, 0);
+    font-size: 24px;
+    transition-delay: 0.2s;
+    height: 0; }
+    .menu-nav.show {
+      transform: translate3d(0, 0, 0);
+      transition-delay: 0.3s;
+      height: 75vh; }
+    .menu-nav .nav-item {
+      transition-delay: 0s; }
+      .menu-nav .nav-item.show {
+        transition-delay: 0.3s; }
+  .menu-branding {
+    height: 0;
+    transform: translate3d(0, -100%, 0);
+    transition-delay: 0.5s; }
+    .menu-branding.show {
+      transform: translate3d(0, 0, 0);
+      transition-delay: 0s;
+      height: 25vh; }
+    .menu-branding .portrait {
+      background: url("menupic.jpg");
+      background-size: cover;
+      width: 150px;
+      height: 150px; }
+  body main {
+    margin: 0;
+    padding: 1rem;
+    align-items: center;
+    text-align: center; }
+    body main .container .my-title {
+      line-height: 1;
+      margin-bottom: 1rem; }
+    body main .container #myitems {
+      flex-direction: column;
+      margin-bottom: 0.5rem; }
+      body main .container #myitems .icons {
+        width: 100%;
+        margin: 1rem 0; }
+        body main .container #myitems .icons div {
+          margin: 1rem 0; }
+        body main .container #myitems .icons:first-child {
+          margin: 1rem 0;
+          position: relative; }
+          body main .container #myitems .icons:first-child::after {
+            position: absolute;
+            width: 70%;
+            top: 115%;
+            height: 0;
+            left: 13vw; }
+    body main .container #aboutme {
+      flex-direction: column;
+      margin-bottom: 0.5rem;
+      margin-top: 4rem; }
+      body main .container #aboutme .profile {
+        margin: 0.5rem 0;
+        width: 100%; }
+      body main .container #aboutme .myabout {
+        margin: 0.5rem 0;
+        width: 100%; }
+    body main .container .mycontacts .boxes div {
+      margin: 0.5rem 0; }
+    body main .container .projects .item {
+      grid-template-columns: auto;
+      grid-template-rows: auto auto auto auto; }
+      body main .container .projects .item .description {
+        grid-row: 3/4;
+        grid-column: 1; }
+      body main .container .projects .item a:first-child {
+        width: 100%;
+        grid-row: 1/3;
+        grid-column: 1; }
+      body main .container .projects .item a:nth-child(3) {
+        grid-row: 4/5;
+        grid-column: 1;
+        width: 60vw; }
+      body main .container .projects .item a:nth-child(4) {
+        grid-row: 5/6;
+        grid-column: 1;
+        width: 60vw; } }
+
+@media screen and (max-width: 350px) {
+  main {
+    padding: 2rem; }
+    main #home h1 {
+      margin-top: 10vh; }
+    main .container #myitems .icons {
+      font-size: small; }
+      main .container #myitems .icons i {
+        width: 10px !important;
+        height: 10px !important; }
+    main .my-projects {
+      margin: 2rem 0;
+      padding: 0.2rem 1rem;
+      position: relative;
+      width: 100%;
+      font-size: 1rem; }
+  .projects {
+    grid-template-columns: 1fr; } }
